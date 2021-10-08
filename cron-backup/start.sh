@@ -7,5 +7,6 @@ echo "running first time backup"
 echo "starting cron"
 cron
 
-echo "tailing logs /var/log/cron.log"
-tail -f /var/log/cron.log
+echo "tailing logs ${LOG_LOCATION}"
+touch ${LOG_LOCATION}
+tail -f ${LOG_LOCATION}

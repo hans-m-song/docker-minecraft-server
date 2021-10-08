@@ -1,7 +1,9 @@
 FROM ubuntu:20.04
 
 RUN apt update && apt install -y cron
-RUN touch /var/log/cron.log
+ARG LOG_LOCATION=/var/log/cron.log
+ENV LOG_LOCATION=${LOG_LOCATION}
+RUN touch ${LOG_LOCATION}
 
 ARG BACKUP_CRONTAB="0 0 * * *"
 RUN echo "${BACKUP_CRONTAB} /backup.sh" > /etc/cron.d/backup-cron \
